@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define N 6
+
+void display_service();
+void display_item();
+void ordering();
+void order_sheet();
+
+char name[N][7] = {"", "노트", "연필", "지우개", "자", "볼펜"};
+int unit_cost[N] = {0, 1000, 500, 300, 800, 1500};
+int number[N] = {0};
+
+int main()
+{
+	int service;
+
+	printf("우리 시스템을 방문해 주셔서 감사합니다.");
+
+	do
+	{
+		display_service();
+		printf("원하는 서비스를 선택하세요. ");
+		scanf("%d", &service);
+
+		switch (service)
+		{
+			case 1: display_item(); ordering(); break;
+			case 2: order_sheet(); break;
+			case 3: exit(0);
+		}
+
+		printf("\n계속 서비스를 원하시면 아무키나 누르세요.");
+		getch();
+		system("cls");
+	} while (service !=3);
+
+	return 0
+}
+
+void display_service
+{
+	printf(">>환영합니다.\n")
+	printf("=====================\n");
+	printf("==1. 상품 주문하기  ==\n");
+	printf("==2. 주문서 확인하기 ==\n");
+	printf("==3. 종료하기     ==\n");
+	printf("=====================\n");
+}
+
+void display_item
+{
+	printf(">> 상품 주문 서비스입니다.\n")
+	printf("=====================\n");
+	printf("1 노트    1000");
+	printf("2 연필     500");
+	printf("3 지우개    300");
+	printf("4 자      800");
+	printf("5 볼펜    1500");
+	printf("=====================\n");
+
+}
+
+void ordering
+{
+	int item, amount, total;
+	printf("원하는 상품의 번호는? ");
+	scanf("%d", &item);
+	printf("%s을(를) 주문할 개수는? ", name[item]);
+	scanf("%d", &amount);
+	total = amount * unit_cost[item];
+	printf("\n 주문하신 %s %d개는 총 %d원입니다.\n", name[item], amount, total);
+}
+
+void order_sheet
+{
+	printf(">> 상품 주문 내역서\n")
+	printf("=====================\n");
+	printf("1 노트    1000");
+	printf("2 연필     500");
+	printf("3 지우개    300");
+	printf("4 자      800");
+	printf("5 볼펜    1500");
+	printf("=====================\n");
+}
